@@ -1,8 +1,8 @@
 ---
 organization: Turbot
-category: ["security"]
+category: ["public cloud"]
 icon_url: "/images/plugins/turbot/linode.svg"
-brand_color: "#4e7e14"
+brand_color: "#00b050"
 display_name: "Linode"
 short_name: "linode"
 description: "Steampipe plugin to query resources, users and more from Linode."
