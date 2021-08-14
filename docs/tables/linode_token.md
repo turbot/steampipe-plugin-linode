@@ -23,7 +23,7 @@ select
 from
   linode_token
 order by
-  age desc
+  age_days desc
 ```
 
 ### Tokens expiring in the next 30 days
