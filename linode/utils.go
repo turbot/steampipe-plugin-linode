@@ -28,10 +28,8 @@ func connect(_ context.Context, d *plugin.QueryData) (linodego.Client, error) {
 
 	// Prefer config settings
 	linodeConfig := GetConfig(d.Connection)
-	if &linodeConfig != nil {
-		if linodeConfig.Token != nil {
-			token = *linodeConfig.Token
-		}
+	if linodeConfig.Token != nil {
+		token = *linodeConfig.Token
 	}
 
 	// Error if the minimum config is not set
