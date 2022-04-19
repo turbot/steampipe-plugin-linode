@@ -1,6 +1,6 @@
 module github.com/turbot/steampipe-plugin-linode
 
-go 1.17
+go 1.18
 
 require (
 	github.com/linode/linodego v1.0.0
