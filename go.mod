@@ -6,7 +6,7 @@ require (
 	github.com/linode/linodego v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/turbot/go-kit v0.4.0
-	github.com/turbot/steampipe-plugin-sdk/v3 v3.3.1
+	github.com/turbot/steampipe-plugin-sdk/v3 v3.3.2
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
 )
 
