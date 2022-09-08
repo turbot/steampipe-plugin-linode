@@ -112,7 +112,7 @@ func listKubernetesClusterPools(ctx context.Context, d *plugin.QueryData, h *plu
 		plugin.Logger(ctx).Error("linode_kubernetes_cluster.listKubernetesClusterPools", "connection_error", err)
 		return nil, err
 	}
-	items, err := conn.ListLKEClusterPools(ctx, cluster.ID, nil)
+	items, err := conn.ListLKENodePools(ctx, cluster.ID, nil)
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_kubernetes_cluster.listKubernetesClusterPools", "query_error", err, "cluster", cluster)
 		return nil, err
