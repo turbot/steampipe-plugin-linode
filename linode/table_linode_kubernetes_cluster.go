@@ -5,9 +5,9 @@ import (
 
 	"github.com/linode/linodego"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableLinodeKubernetesCluster(ctx context.Context) *plugin.Table {
@@ -63,7 +63,7 @@ func getKubernetesCluster(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 		plugin.Logger(ctx).Error("linode_kubernetes_cluster.getKubernetesCluster", "connection_error", err)
 		return nil, err
 	}
-	item, err := conn.GetLKECluster(ctx, int(d.KeyColumnQuals["id"].GetInt64Value()))
+	item, err := conn.GetLKECluster(ctx, int(d.EqualsQuals["id"].GetInt64Value()))
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_kubernetes_cluster.getKubernetesCluster", "query_error", err)
 		return nil, err

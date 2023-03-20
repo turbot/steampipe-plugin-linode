@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/linode/linodego"
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableLinodeInstance(ctx context.Context) *plugin.Table {
@@ -64,7 +64,7 @@ func listInstance(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 	}
 
 	opts := linodego.ListOptions{}
-	keyQuals := d.KeyColumnQuals
+	keyQuals := d.EqualsQuals
 	if keyQuals["filter"] != nil {
 		opts.Filter = keyQuals["filter"].GetStringValue()
 	} else {
@@ -105,7 +105,7 @@ func getInstance(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData
 		plugin.Logger(ctx).Error("linode_instance.getInstance", "connection_error", err)
 		return nil, err
 	}
-	id := int(d.KeyColumnQuals["id"].GetInt64Value())
+	id := int(d.EqualsQuals["id"].GetInt64Value())
 	item, err := conn.GetInstance(ctx, id)
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_instance.getInstance", "query_error", err)

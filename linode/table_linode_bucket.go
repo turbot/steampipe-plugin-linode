@@ -3,8 +3,8 @@ package linode
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
 func tableLinodeBucket(ctx context.Context) *plugin.Table {
@@ -52,7 +52,7 @@ func getBucket(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 		plugin.Logger(ctx).Error("linode_bucket.getBucket", "connection_error", err)
 		return nil, err
 	}
-	item, err := conn.GetObjectStorageBucket(ctx, d.KeyColumnQuals["cluster"].GetStringValue(), d.KeyColumnQuals["label"].GetStringValue())
+	item, err := conn.GetObjectStorageBucket(ctx, d.EqualsQuals["cluster"].GetStringValue(), d.EqualsQuals["label"].GetStringValue())
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_bucket.getBucket", "query_error", err)
 		return nil, err
