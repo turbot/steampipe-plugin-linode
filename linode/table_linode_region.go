@@ -3,8 +3,8 @@ package linode
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
 func tableLinodeRegion(ctx context.Context) *plugin.Table {
@@ -49,7 +49,7 @@ func getRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 		plugin.Logger(ctx).Error("linode_region.getRegion", "connection_error", err)
 		return nil, err
 	}
-	id := d.KeyColumnQuals["id"].GetStringValue()
+	id := d.EqualsQuals["id"].GetStringValue()
 	item, err := conn.GetRegion(ctx, id)
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_region.getRegion", "query_error", err)

@@ -3,9 +3,9 @@ package linode
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableLinodeType(ctx context.Context) *plugin.Table {
@@ -59,7 +59,7 @@ func getType(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (i
 		plugin.Logger(ctx).Error("linode_type.getType", "connection_error", err)
 		return nil, err
 	}
-	id := d.KeyColumnQuals["id"].GetStringValue()
+	id := d.EqualsQuals["id"].GetStringValue()
 	item, err := conn.GetType(ctx, id)
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_type.getType", "query_error", err)

@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/linode/linodego"
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableLinodeVolume(ctx context.Context) *plugin.Table {
@@ -54,7 +54,7 @@ func listVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData)
 	}
 
 	opts := linodego.ListOptions{}
-	keyQuals := d.KeyColumnQuals
+	keyQuals := d.EqualsQuals
 	if keyQuals["filter"] != nil {
 		opts.Filter = keyQuals["filter"].GetStringValue()
 	} else {
@@ -85,7 +85,7 @@ func getVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 		plugin.Logger(ctx).Error("linode_volume.getVolume", "connection_error", err)
 		return nil, err
 	}
-	id := int(d.KeyColumnQuals["id"].GetInt64Value())
+	id := int(d.EqualsQuals["id"].GetInt64Value())
 	item, err := conn.GetVolume(ctx, id)
 	if err != nil {
 		plugin.Logger(ctx).Error("linode_volume.getVolume", "query_error", err)
