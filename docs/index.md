@@ -93,7 +93,7 @@ Each connection is implemented as a distinct [Postgres schema](https://www.postg
 select * from linode_qa.linode_user
 ```
 
-You can multi-account connections by using an [**aggregator** connection](https://steampipe.io/docs/using-steampipe/managing-connections#using-aggregators). Aggregators allow you to query data from multiple connections for a plugin as if they are a single connection.
+You can create multi-account connections by using an [**aggregator** connection](https://steampipe.io/docs/using-steampipe/managing-connections#using-aggregators). Aggregators allow you to query data from multiple connections for a plugin as if they are a single connection.
 
 ```hcl
 connection "linode_all" {
@@ -109,7 +109,7 @@ Querying tables from this connection will return results from the `linode_dev`, 
 select * from linode_all.linode_user
 ```
 
-Alternatively, can use an unqualified name and it will be resolved according to the [Search Path](https://steampipe.io/docs/guides/search-path). It's a good idea to name your aggregator first alphbetically, so that it is the first connection in the search path (i.e. `linode_all` comes before `linode_dev`):
+Alternatively, you can use an unqualified name and it will be resolved according to the [Search Path](https://steampipe.io/docs/guides/search-path). It's a good idea to name your aggregator first alphabetically so that it is the first connection in the search path (i.e. `linode_all` comes before `linode_dev`):
 
 ```sql
 select * from linode_user
