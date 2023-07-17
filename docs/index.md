@@ -66,7 +66,7 @@ connection "linode" {
 
 - `token` - API token from Linode.
 
-### Multi-Account Connections
+## Multi-Account Connections
 
 You may create multiple linode connections:
 
