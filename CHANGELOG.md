@@ -1,3 +1,9 @@
+## v0.4.0 [2023-07-17]
+
+_Enhancements_
+
+- Updated the `docs/index.md` file to include multi-account configuration examples. ([#19](https://github.com/turbot/steampipe-plugin-linode/pull/19))
+
 ## v0.3.0 [2023-04-10]
 
 _Dependencies_
@@ -29,7 +35,7 @@ _Enhancements_
 _Enhancements_
 
 - Recompiled plugin with [steampipe-plugin-sdk v1.8.2](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v182--2021-11-22) and Go version 1.17 ([#4](https://github.com/turbot/steampipe-plugin-linode/pull/4))
-  
+
 ## v0.0.1 [2021-08-05]
 
 _What's new?_
