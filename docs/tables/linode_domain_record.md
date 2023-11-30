@@ -1,12 +1,20 @@
-# Table: linode_domain_record
+---
+title: "Steampipe Table: linode_domain_record - Query Linode Domain Records using SQL"
+description: "Allows users to query Linode Domain Records, providing detailed information about the DNS records associated with a domain."
+---
 
-List domain records.
+# Table: linode_domain_record - Query Linode Domain Records using SQL
 
-Note: A `domain_id` must be provided in all queries to this table.
+A Linode Domain Record represents a DNS record associated with a domain. These records define how internet traffic is directed for a domain. They can be created, updated, or deleted through the Linode API.
+
+## Table Usage Guide
+
+The `linode_domain_record` table provides insights into Domain Records within Linode. As a Network Administrator, explore record-specific details through this table, including record type, name, and associated data. Utilize it to uncover information about records, such as those associated with a specific domain, the record's target, and the priority of MX records.
 
 ## Examples
 
 ### List all records for all domains
+Explore the relationships between different domains and their associated records. This can help you understand the various connections and dependencies within your network infrastructure, providing valuable insights for management and troubleshooting purposes.
 
 ```sql
 select
@@ -22,6 +30,7 @@ where
 ```
 
 ### List all domain records for a domain
+Explore all the domain records associated with a specific domain ID to understand its configuration and settings. This can be useful in managing and troubleshooting domain-related issues.
 
 ```sql
 select
