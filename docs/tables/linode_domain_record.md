@@ -11,6 +11,9 @@ A Linode Domain Record represents a DNS record associated with a domain. These r
 
 The `linode_domain_record` table provides insights into Domain Records within Linode. As a Network Administrator, explore record-specific details through this table, including record type, name, and associated data. Utilize it to uncover information about records, such as those associated with a specific domain, the record's target, and the priority of MX records.
 
+**Important Notes**
+- You must specify the `domain_id` in the `where` clause to query this table.
+
 ## Examples
 
 ### List all records for all domains
