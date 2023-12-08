@@ -16,24 +16,43 @@ The `linode_event` table provides insights into system events related to Linode 
 ### List token create events
 Explore which events are related to the creation of tokens. This can be useful in understanding and auditing security measures, as token creation often relates to authentication processes.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_event
 where
-  action = 'token_create'
+  action = 'token_create';
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_event
+where
+  action = 'token_create';
 ```
 
 ### Events related to a specific domain
 Discover the segments that pertain to a specific domain, enabling you to analyze and understand events related to that particular domain.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_event
 where
   entity ->> 'type' = 'domain'
-  and entity ->> 'label' = 'steampipe.io'
+  and entity ->> 'label' = 'steampipe.io';
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_event
+where
+  json_extract(entity, '$.type') = 'domain'
+  and json_extract(entity, '$.label') = 'steampipe.io';
 ```

@@ -19,7 +19,7 @@ The `linode_domain_record` table provides insights into Domain Records within Li
 ### List all records for all domains
 Explore the relationships between different domains and their associated records. This can help you understand the various connections and dependencies within your network infrastructure, providing valuable insights for management and troubleshooting purposes.
 
-```sql
+```sql+postgres
 select
   d.domain,
   dr.record_type,
@@ -29,17 +29,39 @@ from
   linode_domain as d,
   linode_domain_record as dr
 where
-  dr.domain_id = d.id
+  dr.domain_id = d.id;
+```
+
+```sql+sqlite
+select
+  d.domain,
+  dr.record_type,
+  dr.name,
+  dr.target
+from
+  linode_domain as d,
+  linode_domain_record as dr
+where
+  dr.domain_id = d.id;
 ```
 
 ### List all domain records for a domain
 Explore all the domain records associated with a specific domain ID to understand its configuration and settings. This can be useful in managing and troubleshooting domain-related issues.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_domain_record
 where
-  domain_id = 1234
+  domain_id = 1234;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_domain_record
+where
+  domain_id = 1234;
 ```

@@ -16,19 +16,28 @@ The `linode_region` table provides insights into the geographical distribution o
 ### List all regions
 Discover the segments that allow you to understand the geographical distribution of your Linode resources, helping you manage and optimize your operations based on regional factors.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_region
 order by
-  id
+  id;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_region
+order by
+  id;
 ```
 
 ### List all US regions
 Explore all regions within the United States to better understand the geographical distribution of your resources. This can assist in optimizing resource allocation and improving operational efficiency.
 
-```sql
+```sql+postgres
 select
   *
 from
@@ -36,5 +45,16 @@ from
 where
   country = 'us'
 order by
-  id
+  id;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_region
+where
+  country = 'us'
+order by
+  id;
 ```

@@ -16,21 +16,37 @@ The `linode_bucket` table provides insights into Object Storage Buckets within L
 ### List buckets
 Explore all the storage buckets available in your Linode account. This can help manage resources and assess storage needs.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_bucket
+  linode_bucket;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_bucket;
 ```
 
 ### Buckets in us-east-1
 Explore which Linode storage buckets are located in the 'us-east-1' region. This could be useful for managing data locality and ensuring regulatory compliance.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_bucket
 where
-  cluster = 'us-east-1'
+  cluster = 'us-east-1';
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_bucket
+where
+  cluster = 'us-east-1';
 ```

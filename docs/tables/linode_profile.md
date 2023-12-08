@@ -16,9 +16,16 @@ The `linode_profile` table provides insights into user profiles within Linode. A
 ### Get profile data
 Explore your Linode profile's overall configuration and settings to gain insights into your current setup and identify areas for potential improvement.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_profile
+  linode_profile;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_profile;
 ```

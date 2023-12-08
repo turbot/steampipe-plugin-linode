@@ -16,11 +16,20 @@ The `linode_tag` table provides insights into the tags used within Linode. As a 
 ### List all tags
 Explore all the tags available in your Linode account, sorted by their labels. This is useful for understanding how resources are categorized and can aid in managing and organizing your resources effectively.
 
-```sql
+```sql+postgres
 select
   *
 from
   linode_tag
 order by
-  label
+  label;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_tag
+order by
+  label;
 ```

@@ -16,9 +16,16 @@ The `linode_user` table provides insights into individual users within a Linode 
 ### List users
 Explore the list of users to understand who has access to your system, a crucial step in ensuring data security and managing user permissions.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_user
+  linode_user;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_user;
 ```

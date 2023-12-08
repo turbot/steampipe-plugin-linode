@@ -16,22 +16,39 @@ The `linode_account` table provides insights into the account details within Lin
 ### Get account information
 Review the configuration for your Linode account to gain insights into its settings and details. This is useful for understanding the state and configuration of your account as a whole.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_account
+  linode_account;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_account;
 ```
 
 ### Balances
 Explore the financial status of your Linode accounts. This query provides an overview of the account balances, uninvoiced balances, and associated credit card details, helping you manage your resources effectively.
 
-```sql
+```sql+postgres
 select
   email,
   balance,
   balance_uninvoiced,
   credit_card
 from
-  linode_account
+  linode_account;
+```
+
+```sql+sqlite
+select
+  email,
+  balance,
+  balance_uninvoiced,
+  credit_card
+from
+  linode_account;
 ```

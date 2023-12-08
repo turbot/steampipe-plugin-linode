@@ -16,29 +16,45 @@ The `linode_kubernetes_cluster` table provides insights into Kubernetes clusters
 ### All clusters
 Explore all the Kubernetes clusters in your Linode account to manage and optimize your cloud resources effectively. This can help you in identifying underutilized resources and potential areas for cost savings.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_kubernetes_cluster
+  linode_kubernetes_cluster;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_kubernetes_cluster;
 ```
 
 ### Get Kube Config for a cluster
 Review the configuration for a specific Kubernetes cluster within the Linode service. This is useful for understanding the cluster's setup and managing its resources.
 
-```sql
+```sql+postgres
 select
   kubeconfig
 from
   linode_kubernetes_cluster
 where
-  id = 1234
+  id = 1234;
+```
+
+```sql+sqlite
+select
+  kubeconfig
+from
+  linode_kubernetes_cluster
+where
+  id = 1234;
 ```
 
 ### Instance details for each node in the cluster
 Explore the operational status and other relevant details of each node within a specific cluster. This can be useful in monitoring and managing resources within a cloud-based infrastructure.
 
-```sql
+```sql+postgres
 select
   node ->> 'id' as node_id,
   node ->> 'status' as node_status,
@@ -49,5 +65,19 @@ from
   jsonb_array_elements(pool->'nodes') as node,
   linode_instance as i
 where
-  i.id = (node->'instance_id')::int
+  i.id = (node->'instance_id')::int;
+```
+
+```sql+sqlite
+select
+  json_extract(node.value, '$.id') as node_id,
+  json_extract(node.value, '$.status') as node_status,
+  i.*
+from
+  linode_kubernetes_cluster as kc,
+  json_each(kc.pools) as pool,
+  json_each(json_extract(pool.value, '$.nodes')) as node,
+  linode_instance as i
+where
+  i.id = json_extract(node.value, '$.instance_id');
 ```

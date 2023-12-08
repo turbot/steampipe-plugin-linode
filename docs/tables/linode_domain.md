@@ -16,17 +16,24 @@ The `linode_domain` table provides insights into Domains within Linode. As a Dev
 ### List all domains
 Explore all the domains available in your Linode account. This can help in managing and organizing your resources effectively.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_domain
+  linode_domain;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_domain;
 ```
 
 ### Domains with a given tag
 Discover the segments that are tagged with a specific label, enabling you to organize and manage your resources more effectively. This is particularly useful when you need to perform actions on a group of resources that share a common tag.
 
-```sql
+```sql+postgres
 select
   domain,
   tags
@@ -34,4 +41,8 @@ from
   linode_volume
 where
   tags ? 'foo'
+```
+
+```sql+sqlite
+Error: SQLite does not support '?' operator for checking the existence of a key in a JSON object.
 ```

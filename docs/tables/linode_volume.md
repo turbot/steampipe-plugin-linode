@@ -16,17 +16,24 @@ The `linode_volume` table provides insights into the block storage volumes withi
 ### List volumes
 Explore all available storage volumes within your Linode service. This can help you manage your storage resources effectively and plan for capacity upgrades if necessary.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_volume
+  linode_volume;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_volume;
 ```
 
 ### Find volumes in a bad state
 Discover the segments that have volumes in a suboptimal condition, requiring support intervention, to understand potential issues and regions affected. This aids in troubleshooting and maintaining system health.
 
-```sql
+```sql+postgres
 select
   label,
   size,
@@ -35,13 +42,25 @@ select
 from
   linode_volume
 where
-  status = 'contact_support'
+  status = 'contact_support';
+```
+
+```sql+sqlite
+select
+  label,
+  size,
+  status,
+  region
+from
+  linode_volume
+where
+  status = 'contact_support';
 ```
 
 ### Volumes with a given tag
 Explore which storage volumes are associated with a specific tag to manage resources effectively across different regions.
 
-```sql
+```sql+postgres
 select
   label,
   size,
@@ -53,10 +72,14 @@ where
   tags ? 'foo'
 ```
 
+```sql+sqlite
+Error: SQLite does not support the '?' operator for checking the existence of a key in a JSON object.
+```
+
 ### Top 5 volumes by size
 Discover the segments that have the largest volume sizes to better manage storage resources and optimize data distribution across different regions. This is particularly useful for identifying potential areas for data cleanup or redistribution to improve system performance.
 
-```sql
+```sql+postgres
 select
   label,
   size,
@@ -67,5 +90,19 @@ from
 order by
   size desc
 limit
-  5
+  5;
+```
+
+```sql+sqlite
+select
+  label,
+  size,
+  status,
+  region
+from
+  linode_volume
+order by
+  size desc
+limit
+  5;
 ```

@@ -16,17 +16,24 @@ The `linode_token` table provides insights into Personal Access Tokens within Li
 ### List tokens
 Explore all the available tokens in your Linode account to manage and control access to your resources effectively. This helps in maintaining security and managing permissions within your account.
 
-```sql
+```sql+postgres
 select
   *
 from
-  linode_token
+  linode_token;
+```
+
+```sql+sqlite
+select
+  *
+from
+  linode_token;
 ```
 
 ### Tokens by age in days
 Identify the age of your Linode tokens to understand how long they have been in existence. This can help in managing token lifecycle and ensuring security compliance by replacing or revoking old tokens.
 
-```sql
+```sql+postgres
 select
   token,
   created,
@@ -34,26 +41,47 @@ select
 from
   linode_token
 order by
-  age_days desc
+  age_days desc;
+```
+
+```sql+sqlite
+select
+  token,
+  created,
+  julianday('now') - julianday(created) as age_days
+from
+  linode_token
+order by
+  age_days desc;
 ```
 
 ### Tokens expiring in the next 30 days
 Discover the segments that have tokens expiring in the next 30 days. This is useful for proactively managing and renewing such tokens before they lapse, ensuring uninterrupted access to linked services.
 
-```sql
+```sql+postgres
 select
   token,
   expiry
 from
   linode_token
 where
-  expiry < current_date + interval '30 days'
+  expiry < current_date + interval '30 days';
+```
+
+```sql+sqlite
+select
+  token,
+  expiry
+from
+  linode_token
+where
+  expiry < date('now','+30 days');
 ```
 
 ### Tokens will full permissions
 Explore which tokens have full permissions in Linode. This can be useful for identifying potential security risks and ensuring appropriate access control.
 
-```sql
+```sql+postgres
 select
   *
 from
@@ -62,14 +90,27 @@ where
   scopes ? '*'
 ```
 
+```sql+sqlite
+Error: SQLite does not support '?' operator for JSON objects.
+```
+
 ### Scopes by token
 Explore which Linode API tokens have been granted specific permissions, as this information can be crucial for managing access rights and ensuring security within your system.
 
-```sql
+```sql+postgres
 select
   t.token,
   scope
 from
   linode_token as t,
-  jsonb_array_elements_text(t.scopes) as scope
+  jsonb_array_elements_text(t.scopes) as scope;
+```
+
+```sql+sqlite
+select
+  t.token,
+  json_extract(scope.value, ')
+from
+  linode_token as t,
+  json_each(t.scopes) as scope;
 ```
