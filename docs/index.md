@@ -8,13 +8,14 @@ short_name: "linode"
 description: "Steampipe plugin to query resources, users and more from Linode."
 og_description: "Query Linode with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/linode-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Linode + Steampipe
 
 [Linode](https://linode.com) is a cloud hosting company that provides virtual private servers and other infrastructure services.
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 List instances in your Linode account:
 
@@ -125,7 +126,4 @@ connection "linode_all" {
 }
 ```
 
-## Get involved
 
-- Open source: https://github.com/turbot/steampipe-plugin-linode
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
