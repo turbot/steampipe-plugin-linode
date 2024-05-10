@@ -19,7 +19,7 @@ func tableLinodeType(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getType,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "The ID representing the Linode Type."},
 			{Name: "disk", Type: proto.ColumnType_INT, Description: "The Disk size, in MB, of the Linode Type."},
@@ -32,7 +32,7 @@ func tableLinodeType(ctx context.Context) *plugin.Table {
 			{Name: "memory", Type: proto.ColumnType_INT, Description: "Amount of RAM included in this Linode Type."},
 			{Name: "transfer", Type: proto.ColumnType_INT, Description: "The monthly outbound transfer amount, in MB."},
 			{Name: "vcpus", Type: proto.ColumnType_INT, Transform: transform.FromField("VCPUs"), Description: "The number of VCPU cores this Linode Type offers."},
-		},
+		}),
 	}
 }
 
