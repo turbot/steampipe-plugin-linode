@@ -14,7 +14,7 @@ func tableLinodeProfile(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: getProfile,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "uid", Type: proto.ColumnType_STRING, Description: "Your unique ID in our system. This value will never change, and can safely be used to identify your User."},
 			{Name: "username", Type: proto.ColumnType_STRING, Description: "Your username, used for logging in to our system."},
@@ -28,7 +28,7 @@ func tableLinodeProfile(ctx context.Context) *plugin.Table {
 			{Name: "restricted", Type: proto.ColumnType_BOOL, Description: "If true, your User has restrictions on what can be accessed on your Account."},
 			{Name: "timezone", Type: proto.ColumnType_STRING, Description: "The timezone you prefer to see times in."},
 			{Name: "two_factor_auth", Type: proto.ColumnType_BOOL, Description: "If true, logins from untrusted computers will require Two Factor Authentication."},
-		},
+		}),
 	}
 }
 

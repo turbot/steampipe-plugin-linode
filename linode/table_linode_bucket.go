@@ -18,14 +18,14 @@ func tableLinodeBucket(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.AllColumns([]string{"cluster", "label"}),
 			Hydrate:    getBucket,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "The name of this bucket."},
 			// Other columns
 			{Name: "cluster", Type: proto.ColumnType_STRING, Description: "The ID of the Object Storage Cluster this bucket is in."},
 			{Name: "created", Type: proto.ColumnType_TIMESTAMP, Description: "When this bucket was created."},
 			{Name: "hostname", Type: proto.ColumnType_STRING, Description: "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public."},
-		},
+		}),
 	}
 }
 

@@ -18,11 +18,11 @@ func tableLinodeRegion(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getRegion,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "The region."},
 			{Name: "country", Type: proto.ColumnType_STRING, Description: "Country for the region."},
-		},
+		}),
 	}
 }
 

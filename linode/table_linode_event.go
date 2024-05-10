@@ -27,7 +27,7 @@ func tableLinodeEvent(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getEvent,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this Event."},
 			{Name: "created", Type: proto.ColumnType_TIMESTAMP, Description: "The date and time this event was created."},
@@ -43,7 +43,7 @@ func tableLinodeEvent(ctx context.Context) *plugin.Table {
 			{Name: "seen", Type: proto.ColumnType_BOOL, Description: "If this Event has been seen."},
 			{Name: "secondary_entity", Type: proto.ColumnType_JSON, Description: "Detailed information about the Event's secondary or related entity, including ID, type, label, and URL used to access it."},
 			{Name: "time_remaining", Type: proto.ColumnType_INT, Description: "The estimated time remaining until the completion of this Event. This value is only returned for in-progress events."},
-		},
+		}),
 	}
 }
 

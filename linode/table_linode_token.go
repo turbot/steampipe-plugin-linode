@@ -20,7 +20,7 @@ func tableLinodeToken(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getToken,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "This token's label. This is for display purposes only, but can be used to more easily track what you're using each token for."},
 			{Name: "token", Type: proto.ColumnType_STRING, Description: "First 16 characters of the token."},
@@ -29,7 +29,7 @@ func tableLinodeToken(ctx context.Context) *plugin.Table {
 			{Name: "created", Type: proto.ColumnType_TIMESTAMP, Description: "The date and time this token was created."},
 			{Name: "expiry", Type: proto.ColumnType_TIMESTAMP, Description: "When this token will expire."},
 			{Name: "id", Type: proto.ColumnType_INT, Description: "This token's unique ID, which can be used to revoke it."},
-		},
+		}),
 	}
 }
 

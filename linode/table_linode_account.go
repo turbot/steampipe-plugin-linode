@@ -14,7 +14,7 @@ func tableLinodeAccount(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: getAccount,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "email", Type: proto.ColumnType_STRING, Description: "The email address of the person associated with this Account."},
 			// Other columns
@@ -32,7 +32,7 @@ func tableLinodeAccount(ctx context.Context) *plugin.Table {
 			{Name: "state", Type: proto.ColumnType_STRING, Description: "The state for this Account’s billing address."},
 			{Name: "tax_id", Type: proto.ColumnType_STRING, Description: "The tax identification number associated with this Account, for tax calculations in some countries. If you do not live in a country that collects tax, this should be null."},
 			{Name: "zip", Type: proto.ColumnType_STRING, Description: "The zip code of this Account’s billing address."},
-		},
+		}),
 	}
 }
 

@@ -27,7 +27,7 @@ func tableLinodeVolume(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getVolume,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this Volume."},
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "The Volume’s label is for display purposes only."},
@@ -42,7 +42,7 @@ func tableLinodeVolume(ctx context.Context) *plugin.Table {
 			{Name: "tags", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags").Transform(transform.StringArrayToMap), Description: "Tags applied to this volume as a map."},
 			{Name: "tags_src", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags"), Description: "List of Tags applied to this volume."},
 			{Name: "updated", Type: proto.ColumnType_TIMESTAMP, Description: "When this Volume was last updated."},
-		},
+		}),
 	}
 }
 

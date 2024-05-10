@@ -14,10 +14,10 @@ func tableLinodeTag(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listTag,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "A Label used for organization of objects on your Account."},
-		},
+		}),
 	}
 }
 

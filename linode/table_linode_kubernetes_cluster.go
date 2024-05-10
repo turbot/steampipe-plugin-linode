@@ -21,7 +21,7 @@ func tableLinodeKubernetesCluster(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getKubernetesCluster,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "This Kubernetes cluster’s unique ID."},
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "This Kubernetes cluster’s unique label for display purposes only."},
@@ -36,7 +36,7 @@ func tableLinodeKubernetesCluster(ctx context.Context) *plugin.Table {
 			{Name: "tags", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags").Transform(transform.StringArrayToMap), Description: "Tags applied to the Kubernetes cluster as a map."},
 			{Name: "tags_src", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags"), Description: "List of Tags applied to the Kubernetes cluster."},
 			{Name: "updated", Type: proto.ColumnType_TIMESTAMP, Description: "When this Kubernetes cluster was updated."},
-		},
+		}),
 	}
 }
 
