@@ -24,7 +24,7 @@ func tableLinodeDomainRecord(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.AllColumns([]string{"domain_id", "id"}),
 			Hydrate:    getDomainRecord,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "domain_id", Type: proto.ColumnType_INT, Transform: transform.FromQual("domain_id"), Description: "The ID of the Domain for the record."},
 			{Name: "id", Type: proto.ColumnType_INT, Description: "This Record’s unique ID."},
@@ -40,7 +40,7 @@ func tableLinodeDomainRecord(ctx context.Context) *plugin.Table {
 			{Name: "target", Type: proto.ColumnType_STRING, Description: "The target for this Record. For requests, this property’s actual usage and whether it is required depends on the type of record this represents. For example, for CNAME it is the domain target."},
 			{Name: "ttl_sec", Type: proto.ColumnType_INT, Transform: transform.FromField("TTLSec").NullIfZero(), Description: "Time to Live - the amount of time in seconds that the domain record may be cached by resolvers or other domain servers."},
 			{Name: "weight", Type: proto.ColumnType_INT, Description: "The relative weight of this Record used in the case of identical priority. Higher values are preferred. Only valid and required for SRV record requests."},
-		},
+		}),
 	}
 }
 
