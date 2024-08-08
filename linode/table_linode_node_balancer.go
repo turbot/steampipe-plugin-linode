@@ -51,7 +51,7 @@ func listNodeBalancers(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 		return nil, err
 	}
 	for _, i := range items {
-		d.StreamListItem(ctx, I)
+		d.StreamListItem(ctx, i)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
 		if d.RowsRemaining(ctx) == 0 {
