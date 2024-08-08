@@ -23,6 +23,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"linode_domain":             tableLinodeDomain(ctx),
 			"linode_domain_record":      tableLinodeDomainRecord(ctx),
 			"linode_event":              tableLinodeEvent(ctx),
+			"linode_firewall":           tableLinodeFirewall(ctx),
 			"linode_image":              tableLinodeImage(ctx),
 			"linode_instance":           tableLinodeInstance(ctx),
 			"linode_kubernetes_cluster": tableLinodeKubernetesCluster(ctx),
