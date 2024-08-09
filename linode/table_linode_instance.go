@@ -30,7 +30,7 @@ func tableLinodeInstance(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getInstance,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this Instance."},
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "The Instance’s label is for display purposes only."},
@@ -52,7 +52,7 @@ func tableLinodeInstance(ctx context.Context) *plugin.Table {
 			{Name: "tags_src", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags"), Description: "List of Tags applied to this instance."},
 			{Name: "updated", Type: proto.ColumnType_TIMESTAMP, Description: "When this Instance was last updated."},
 			{Name: "watchdog_enabled", Type: proto.ColumnType_BOOL, Description: "The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly."},
-		},
+		}),
 	}
 }
 
