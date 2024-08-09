@@ -27,6 +27,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"linode_image":              tableLinodeImage(ctx),
 			"linode_instance":           tableLinodeInstance(ctx),
 			"linode_kubernetes_cluster": tableLinodeKubernetesCluster(ctx),
+			"linode_node_balancer":      tableLinodeNodeBalancer(ctx),
 			"linode_profile":            tableLinodeProfile(ctx),
 			"linode_region":             tableLinodeRegion(ctx),
 			"linode_tag":                tableLinodeTag(ctx),
