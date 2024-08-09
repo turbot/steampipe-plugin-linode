@@ -16,7 +16,7 @@ func tableLinodeNodeBalancer(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listNodeBalancers,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this NodeBalancer."},
 			{Name: "created", Type: proto.ColumnType_TIMESTAMP, Description: "When the NodeBalancer was created."},
@@ -30,7 +30,7 @@ func tableLinodeNodeBalancer(ctx context.Context) *plugin.Table {
 			{Name: "transfer", Type: proto.ColumnType_JSON, Description: "Information about the amount of transfer this NodeBalancer has had so far this month."},
 			{Name: "tags", Type: proto.ColumnType_JSON, Description: "An array of tags applied to this object. Tags are for organizational purposes only."},
 			{Name: "configurations", Hydrate: getNodeBalancersConfiguration, Transform: transform.FromValue(), Type: proto.ColumnType_JSON, Description: "The NodeBalancer configurations."},
-		},
+		}),
 	}
 }
 
@@ -52,6 +52,11 @@ func listNodeBalancers(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 	}
 	for _, i := range items {
 		d.StreamListItem(ctx, i)
+
+		// Context may get cancelled due to manual cancellation or if the limit has been reached
+		if d.RowsRemaining(ctx) == 0 {
+			return nil, nil
+		}
 	}
 	return nil, nil
 }
