@@ -30,7 +30,7 @@ func tableLinodeImage(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getImage,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "The unique ID of this Image."},
 			{Name: "label", Type: proto.ColumnType_STRING, Description: "A short description of the Image."},
@@ -45,7 +45,7 @@ func tableLinodeImage(ctx context.Context) *plugin.Table {
 			{Name: "is_public", Type: proto.ColumnType_BOOL, Description: "True if the Image is public."},
 			{Name: "size", Type: proto.ColumnType_INT, Description: "The minimum size this Image needs to deploy. Size is in MB."},
 			{Name: "vendor", Type: proto.ColumnType_STRING, Description: "The upstream distribution vendor. None for private Images."},
-		},
+		}),
 	}
 }
 

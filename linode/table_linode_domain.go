@@ -27,7 +27,7 @@ func tableLinodeDomain(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getDomain,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this Domain."},
 			{Name: "domain", Type: proto.ColumnType_STRING, Description: "The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain."},
@@ -45,7 +45,7 @@ func tableLinodeDomain(ctx context.Context) *plugin.Table {
 			{Name: "tags", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags").Transform(transform.StringArrayToMap), Description: "Tags applied to this domain as a map."},
 			{Name: "tags_src", Type: proto.ColumnType_JSON, Transform: transform.FromField("Tags"), Description: "List of Tags applied to this domain."},
 			{Name: "ttl_sec", Type: proto.ColumnType_INT, Transform: transform.FromField("TTLSec").NullIfZero(), Description: "Time to Live - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers."},
-		},
+		}),
 	}
 }
 
