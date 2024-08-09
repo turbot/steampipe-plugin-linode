@@ -9,6 +9,8 @@ _What's new?_
 _Enhancements_
 
 - The `euuid` column has now been assigned as a connection key column across all the tables which facilitates more precise and efficient querying across multiple Linode accounts. ([#56](https://github.com/turbot/steampipe-plugin-linode/pull/56))
+- The Plugin and the Steampipe Anywhere binaries are now built with the `netgo` package. ([#60](https://github.com/turbot/steampipe-plugin-linode/pull/60))
+- Added the `version` flag to the plugin's Export tool. ([#65](https://github.com/turbot/steampipe-export/pull/65))
 
 _Dependencies_
 
