@@ -1,3 +1,22 @@
+## v0.7.0 [2024-08-08]
+
+_What's new?_
+
+- New tables added
+  - [linode_firewall](https://hub.steampipe.io/plugins/turbot/linode/tables/linode_firewall)
+  - [linode_node_balancer](https://hub.steampipe.io/plugins/turbot/linode/tables/linode_node_balancer)
+
+_Enhancements_
+
+- The `euuid` column has now been assigned as a connection key column across all the tables which facilitates more precise and efficient querying across multiple Linode accounts. ([#56](https://github.com/turbot/steampipe-plugin-linode/pull/56))
+- The Plugin and the Steampipe Anywhere binaries are now built with the `netgo` package. ([#60](https://github.com/turbot/steampipe-plugin-linode/pull/60))
+- Added the `version` flag to the plugin's Export tool. ([#65](https://github.com/turbot/steampipe-export/pull/65))
+
+_Dependencies_
+
+- Recompiled plugin with [linode-sdk-for-go v1.37.0](https://github.com/linode/linodego/releases/tag/v1.37.0). ([#56](https://github.com/turbot/steampipe-plugin-linode/pull/56))
+- Recompiled plugin with [steampipe-plugin-sdk v5.10.1](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v5101-2024-05-09) which ensures that `QueryData` passed to `ConnectionKeyColumns` value callback is populated with `ConnectionManager`. ([#55](https://github.com/turbot/steampipe-plugin-linode/pull/55))
+
 ## v0.6.0 [2023-12-12]
 
 _What's new?_
