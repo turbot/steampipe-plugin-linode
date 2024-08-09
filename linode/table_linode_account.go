@@ -5,6 +5,7 @@ import (
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableLinodeAccount(ctx context.Context) *plugin.Table {
@@ -28,6 +29,7 @@ func tableLinodeAccount(ctx context.Context) *plugin.Table {
 			{Name: "credit_card", Type: proto.ColumnType_JSON, Description: "Credit Card information associated with this Account."},
 			{Name: "first_name", Type: proto.ColumnType_STRING, Description: "The first name of the person associated with this Account."},
 			{Name: "last_name", Type: proto.ColumnType_STRING, Description: "The last name of the person associated with this Account."},
+			{Name: "euuid", Type: proto.ColumnType_STRING, Description: "An external unique identifier for this account.", Transform: transform.FromField("EUUID")},
 			{Name: "phone", Type: proto.ColumnType_STRING, Description: "The phone number associated with this Account."},
 			{Name: "state", Type: proto.ColumnType_STRING, Description: "The state for this Account’s billing address."},
 			{Name: "tax_id", Type: proto.ColumnType_STRING, Description: "The tax identification number associated with this Account, for tax calculations in some countries. If you do not live in a country that collects tax, this should be null."},
