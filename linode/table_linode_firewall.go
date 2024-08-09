@@ -19,7 +19,7 @@ func tableLinodeFirewall(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getFirewall,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "The unique ID of this Firewall."},
 			{Name: "created", Type: proto.ColumnType_TIMESTAMP, Description: "The date and time this firewall was created."},
@@ -28,7 +28,7 @@ func tableLinodeFirewall(ctx context.Context) *plugin.Table {
 			{Name: "status", Type: proto.ColumnType_STRING, Description: "The status of the firewall. Possible values are 'enabled', 'disabled', or 'deleted'."},
 			{Name: "tags", Type: proto.ColumnType_JSON, Description: "Tags applied to this firewall."},
 			{Name: "rules", Type: proto.ColumnType_JSON, Description: "The rules associated with the firewall."},
-		},
+		}),
 	}
 }
 
