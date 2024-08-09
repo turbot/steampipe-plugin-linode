@@ -1,3 +1,11 @@
+## v0.7.0 [2024-08-08]
+
+_What's new?_
+
+- New tables added
+  - [linode_firewall](https://hub.steampipe.io/plugins/turbot/linode/tables/linode_firewall)
+  - [linode_node_balancer](https://hub.steampipe.io/plugins/turbot/linode/tables/linode_node_balancer)
+
 ## v0.6.0 [2023-12-12]
 
 _What's new?_
