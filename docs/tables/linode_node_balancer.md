@@ -61,24 +61,6 @@ group by
   region;
 ```
 
-### NodeBalancers with specific tags
-Find NodeBalancers with specific tags to organize and manage your infrastructure more effectively.
-
-```sql+postgres
-select
-  label,
-  tags,
-  region
-from
-  linode_node_balancer
-where
-  tags ? 'production';
-```
-
-```sql+sqlite
-Error: SQLite does not support '?' operator used for checking if an element exists in a JSON array.
-```
-
 ### NodeBalancers created in the last 30 days
 List all NodeBalancers that were created in the last 30 days to monitor new infrastructure additions.
 
