@@ -8,7 +8,7 @@ require (
 	github.com/linode/linodego v1.37.0
 	github.com/pkg/errors v0.9.1
 	github.com/turbot/go-kit v1.1.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.6
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.7
 	golang.org/x/oauth2 v0.21.0
 )
 
