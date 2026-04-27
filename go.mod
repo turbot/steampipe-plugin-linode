@@ -7,7 +7,7 @@ toolchain go1.24.1
 require (
 	github.com/linode/linodego v1.37.0
 	github.com/pkg/errors v0.9.1
-	github.com/turbot/go-kit v1.1.0
+	github.com/turbot/go-kit v1.3.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.13.1
 	golang.org/x/oauth2 v0.27.0
 )
